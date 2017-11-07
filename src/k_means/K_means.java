@@ -26,7 +26,7 @@ public class K_means {
     
     public K_means(In in) {
         this(in.readInt());    // 点的数量
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             int x = in.readInt();    // 读取 x 坐标
             int y = in.readInt();    // 读取 y 坐标
             Point point = new Point(i, x, y);
@@ -34,6 +34,10 @@ public class K_means {
         }
     }
     
+    /**
+     * 运行算法
+     * @param k 指定聚类中心个数
+     */
     @SuppressWarnings("unchecked")
     public int run(int k) {
         this.k = k;
@@ -64,9 +68,9 @@ public class K_means {
             for(int i = 1; i <= k; i++) {
                 preCenters[i] = curCenters[i];
                 double newCenterX = 0, newCenterY = 0;
-                for(int num: clusters[i]) {
-                    newCenterX += points[num].getX();
-                    newCenterY += points[num].getY();
+                for(int number: clusters[i]) {
+                    newCenterX += points[number].getX();
+                    newCenterY += points[number].getY();
                 }
                 newCenterX /= clusters[i].size();
                 newCenterY /= clusters[i].size();
@@ -79,7 +83,7 @@ public class K_means {
             for(int i = 1; i <= k; i++) {
                 canStop = canStop && (preCenters[i].compare(curCenters[i]));
             }
-            if(canStop)
+            if(canStop)    // 算法收敛
                 break;
             else {   // 开始迭代
                 for(int i = 1; i <= k; i++) {

@@ -9,7 +9,7 @@ import utils.Point;
 
 /**
  * @author huang
- * 基于距离阈值的聚类算法
+ * 近邻聚类法（基于距离阈值的聚类算法）
  */
 public class Distance_threshold {
     private final int num;    // 点的数量
