@@ -24,7 +24,7 @@ public class Distance_threshold {
     
     public Distance_threshold(In in) {
         this(in.readInt());    // 点的数量
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             int x = in.readInt();    // 读取 x 坐标
             int y = in.readInt();    // 读取 y 坐标
             Point point = new Point(i, x, y);
@@ -41,7 +41,7 @@ public class Distance_threshold {
         int startId = 1;
         centers.add(startId);
         points[startId].setClusteringResult(startId);
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             if(i == startId)
                 continue;
             double minDistance = Double.MAX_VALUE;
@@ -64,7 +64,7 @@ public class Distance_threshold {
     
     public void showClusteringResult() {
         System.out.println("Distance_threshold clustering centers number: " + centers.size());
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             System.out.println("id: " + points[i].getId() + ", clusteringResult: " + points[i].getClusteringResult());
         }
 //        String centersResult = "";

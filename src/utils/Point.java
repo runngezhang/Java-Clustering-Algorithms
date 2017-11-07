@@ -3,9 +3,13 @@ package utils;
 public class Point {
     private final double x;
     private final double y;
-    private final int id;
+    private int id;
     private int clusteringResult;
     
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
     public Point(int id, double x, double y) {
         this.id = id;
         this.x = x;
@@ -36,5 +40,10 @@ public class Point {
         double xDistance = Math.abs(x - another.getX());
         double yDistance = Math.abs(y - another.getY());
         return Math.sqrt(Math.pow(xDistance,2) + Math.pow(yDistance,2));
+    }
+    public boolean compare(Point another) {
+        boolean xIsTheSame = (x - another.getX()) < 1e-6;
+        boolean yIsTheSame = (y - another.getY()) < 1e-6;
+        return xIsTheSame && yIsTheSame;
     }
 }

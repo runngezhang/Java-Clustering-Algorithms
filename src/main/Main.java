@@ -8,7 +8,7 @@ import utils.In;
 public class Main {
 
     public static void main(String[] args) {
-        String filepath = "/Users/huang/Desktop/java learning/ClusteringAlgorithm/data/test.txt";
+        String filepath = "/Users/huang/Desktop/java learning/ClusteringAlgorithm/data/test2.txt";
 //        Distance_threshold distance_threshold_model = new Distance_threshold(new In(filepath));
 //        distance_threshold_model.run(args[1]);
 //        distance_threshold_model.run(3);
@@ -19,7 +19,8 @@ public class Main {
 //      hierarchical_model.showClusteringResult();
       
         K_means k_means_model = new K_means(new In(filepath));
-        k_means_model.run(2);
+        int times = k_means_model.run(2);
+        System.out.println("迭代次数: " + times);
         k_means_model.showClusteringResult();
     }
 

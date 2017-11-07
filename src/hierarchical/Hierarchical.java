@@ -22,7 +22,7 @@ public class Hierarchical {
     
     public Hierarchical(In in) {
         this(in.readInt());    // 点的数量
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             int x = in.readInt();    // 读取 x 坐标
             int y = in.readInt();    // 读取 y 坐标
             Point point = new Point(i, x, y, i);
@@ -38,8 +38,8 @@ public class Hierarchical {
         while(true) {
             double minDistance = Double.MAX_VALUE;
             int nearestI = 0, nearestJ = 0;
-            for(int i = 1; i < num+1; i++) {
-                for(int j = i+1; j < num+1; j++) {
+            for(int i = 1; i <= num; i++) {
+                for(int j = i+1; j <= num; j++) {
                     
                     if(points[i].getClusteringResult() == points[j].getClusteringResult())    // 如果两个点已经在同一类，则将其距离设为最大，避免影响后面的计算（好像也不影响，跳过了）
                         distanceArray[i][j] = Double.MAX_VALUE;
@@ -58,7 +58,7 @@ public class Hierarchical {
                 break;
             else {
                 int center = points[nearestJ].getClusteringResult();
-                for(int i = 1; i < num+1; i++) {    // nearestI 和 nearestJ 合并（要查找和 nearestI 一类的所有点，改变其聚类结果）
+                for(int i = 1; i <= num; i++) {    // nearestI 和 nearestJ 合并（要查找和 nearestI 一类的所有点，改变其聚类结果）
                     if(points[i].getClusteringResult() == center) {
                         points[i].setClusteringResult(points[nearestI].getClusteringResult());
                     }
@@ -70,7 +70,7 @@ public class Hierarchical {
     
     public void showClusteringResult() {
         System.out.println("Hierarchical clustering centers number: " + centerNum);
-        for(int i = 1; i < num+1; i++) {
+        for(int i = 1; i <= num; i++) {
             System.out.println("id: " + points[i].getId() + ", clusteringResult: " + points[i].getClusteringResult());
         }
     }
